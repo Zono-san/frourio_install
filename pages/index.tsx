@@ -6,8 +6,10 @@ import { apiClient } from '~/utils/apiClient'
 import UserBanner from '~/components/UserBanner'
 import type { Task } from '$prisma/client'
 import type { FormEvent, ChangeEvent } from 'react'
-import { getAllJSDocTagsOfKind, isNumericLiteral } from 'typescript'
+import { getAllJSDocTagsOfKind, isNoSubstitutionTemplateLiteral, isNumericLiteral } from 'typescript'
 import { isNumber } from 'class-validator'
+import { type } from 'os'
+import { CANCELLED } from 'dns'
 
 const Home = () => {
   const { data: tasks, error, revalidate } = useAspidaSWR(apiClient.tasks)
@@ -39,8 +41,8 @@ const Home = () => {
     revalidate()
   }, [])
 
-  const onClick = (x: number, y: number) => {
-    alert(`上から${x}行目、左から${y}行目の白い石がクリックされました`)
+  const onClick = (x: number, y: number, stone: number) => {
+    alert(`左から${x}列目、上から${y}行目に${stone !==0 ?(stone ===1 ? "黒い石があります" : "白い石があります") :"石はありません"}`)
   }
 
   const [board, setBoard] = useState([
@@ -125,9 +127,9 @@ const Home = () => {
           <div className={styles.square}>
             <div className={styles.squareIn}>
                 {board.map((cell, i) => (
-                  <div key={i} className={styles.cell} onClick={() => {onClick(cell.x, cell.y)}}>
+                  <div key={i} className={styles.cell} onClick={() => {onClick(cell.x, cell.y, cell.stone)}}>
                     {cell.stone !== 0 && <div
-                      className={cell.stone===1 ?styles.blackStone :styles.whiteStone}
+                      className={cell.stone===1 ?styles.blackStone :styles.whiteStone}  
                     ></div>}
                   </div>))}
             </div>
