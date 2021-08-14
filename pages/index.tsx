@@ -10,6 +10,7 @@ import { getAllJSDocTagsOfKind, isNoSubstitutionTemplateLiteral, isNumericLitera
 import { isNumber } from 'class-validator'
 import { type } from 'os'
 import { CANCELLED } from 'dns'
+import { clearLine } from 'readline'
 
 const Home = () => {
   const { data: tasks, error, revalidate } = useAspidaSWR(apiClient.tasks)
@@ -42,12 +43,13 @@ const Home = () => {
   }, [])
 
   const onClick = (x: number, y: number, stone: number) => {
-    alert(`左から${x}列目、上から${y}行目に${stone !==0 ?(stone ===1 ? "黒い石があります" : "白い石があります") :"石はありません"}`)
+    alert(`左から${x}列目、上から${y}行目に${stone !==0 ? (stone ===1 ? "黒い石があります" : "白い石があります") : "石はありません"}`)
     const newBoard = board.map((cell) =>
-      cell.x===x && cell.y===y && cell.stone!==1 ? {...cell, stone:1} : cell
+      cell.x===x && cell.y===y && cell.stone!==0 ? (cell.stone ===1 ? {...cell,stone:2} : {...cell,stone:1}) : cell
       )
       setBoard(newBoard)
   }
+
   const [board, setBoard] = useState([
     {x:0, y:0, stone:0},
     {x:1, y:0, stone:0},
@@ -142,6 +144,7 @@ const Home = () => {
     </div>
   )}
 export default Home
+
 function setStone() {
   throw new Error('Function not implemented.')
 }
