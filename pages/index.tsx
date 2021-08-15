@@ -16,6 +16,14 @@ const STONE={
   NONE:0,
   BLACK:1,
   WHITE:2
+}as const
+
+type Cell = {
+  x:number,
+  y:number,
+  stone:(typeof STONE)[
+    keyof typeof STONE
+  ]
 }
 
 const Home = () => {
@@ -48,15 +56,15 @@ const Home = () => {
     revalidate()
   }, [])
 
-  const onClick = (x: number, y: number, stone: number) => {
-    console.log(`左から${x}列目、上から${y}行目に${stone !==0 ? (stone ===1 ? "黒い石があります" : "白い石があります") : "石はありません"}`)
+  const onClick = (clickedCell:Cell) => {
+    console.log(`左から${clickedCell.x}列目、上から${clickedCell.y}行目に${clickedCell.stone !==0 ? (clickedCell.stone ===1 ? "黒い石があります" : "白い石があります") : "石はありません"}`)
     const newBoard = board.map((cell) =>
-      cell.x===x && cell.y===y ? {...cell,stone:(stone ===STONE.BLACK ? STONE.WHITE : STONE.BLACK )} : cell
+      cell.x===clickedCell.x && cell.y===clickedCell.y ? {...cell,stone:(clickedCell.stone ===STONE.BLACK ? STONE.WHITE : STONE.BLACK )} : cell
       )
       setBoard(newBoard)
   }
 
-  const [board, setBoard] = useState([
+  const [board, setBoard] = useState<Cell[]>([
     {x:0, y:0, stone:STONE.NONE},
     {x:1, y:0, stone:STONE.NONE},
     {x:2, y:0, stone:STONE.NONE},
@@ -138,7 +146,7 @@ const Home = () => {
           <div className={styles.square}>
             <div className={styles.squareIn}>
                 {board.map((cell, i) => (
-                  <div key={i} className={styles.cell} onClick={() => {onClick(cell.x, cell.y, cell.stone)}}>
+                  <div key={i} className={styles.cell} onClick={() => {onClick(cell)}}>
                     {cell.stone !== 0 && <div
                       className={cell.stone===1 ?styles.blackStone :styles.whiteStone}  
                     ></div>}
