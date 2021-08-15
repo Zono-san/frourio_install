@@ -45,7 +45,7 @@ const Home = () => {
   const onClick = (x: number, y: number, stone: number) => {
     alert(`左から${x}列目、上から${y}行目に${stone !==0 ? (stone ===1 ? "黒い石があります" : "白い石があります") : "石はありません"}`)
     const newBoard = board.map((cell) =>
-      cell.x===x && cell.y===y && cell.stone!==0 ? (cell.stone ===1 ? {...cell,stone:2} : {...cell,stone:1}) : cell
+      cell.x===x && cell.y===y ? {...cell,stone:(stone ===1 ? (2) : (1) )} : cell
       )
       setBoard(newBoard)
   }
