@@ -31,10 +31,10 @@ jobs:
       - run: npm install --prefix server
         if: steps.server-npm-cache.outputs.cache-hit != 'true'
       - run: npm run lint
-      - run: echo "DATABASE_URL=file:./dev.db" > server/prisma/.env
+      - run: echo "API_DATABASE_URL=file:./dev.db" > server/prisma/.env
       - run: npm run typecheck
-      - run: |
-          npm run migrate:dev
-          npm test
-        env:
-          API_JWT_SECRET: test_secret
+      # - run: |
+      #     npm run migrate:dev
+      #     npm test
+      #   env:
+      #     API_JWT_SECRET: test_secret
