@@ -51,10 +51,10 @@ const Home = () => {
     revalidate()
   }, [])
 
-  const deleteTask = useCallback(async (task: Task) => {
-    await apiClient.tasks._taskId(task.id).delete()
-    revalidate()
-  }, [])
+  // const deleteTask = useCallback(async (task: Task) => {
+  //   await apiClient.tasks._taskId(task.id).delete()
+  //   revalidate()
+  // }, [])
 
   const isEqualCellAndClickedCell = (cell: Cell, clickedCell: Cell)  => {
      return cell.x===clickedCell.x && cell.y===clickedCell.y
