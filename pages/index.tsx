@@ -56,10 +56,18 @@ const Home = () => {
     revalidate()
   }, [])
 
-  const onClick = (clickedCell:Cell) => {
+  const isEqualCellAndClickedCell = (cell: Cell, clickedCell: Cell)  => {
+     return cell.x===clickedCell.x && cell.y===clickedCell.y
+  }
+
+  const changeStoneOfCell = (cell: Cell, clickedCell: Cell) => {
+    return {...cell,stone:(clickedCell.stone ===STONE.BLACK ? STONE.WHITE : STONE.BLACK )}
+  }
+
+  const onClick = (clickedCell: Cell) => {
     console.log(`左から${clickedCell.x}列目、上から${clickedCell.y}行目に${clickedCell.stone !==0 ? (clickedCell.stone ===1 ? "黒い石があります" : "白い石があります") : "石はありません"}`)
     const newBoard = board.map((cell) =>
-      cell.x===clickedCell.x && cell.y===clickedCell.y ? {...cell,stone:(clickedCell.stone ===STONE.BLACK ? STONE.WHITE : STONE.BLACK )} : cell
+    isEqualCellAndClickedCell(cell, clickedCell) ? changeStoneOfCell(cell, clickedCell) : cell
       )
       setBoard(newBoard)
   }
