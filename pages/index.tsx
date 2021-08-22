@@ -52,6 +52,10 @@ const Home = () => {
     return cell.x === clickedCell.x && cell.y === clickedCell.y
   }
 
+  const hasStoneLeft = (cell: Cell) => {
+    return board.some(cell) ? STONE.BLACK : cell
+  }
+
   const changeStoneOfCell = (cell: Cell, clickedCell: Cell) => {
     return {
       ...cell,
@@ -60,7 +64,7 @@ const Home = () => {
   }
 
   const changeCell = (cell: Cell, clickedCell: Cell) => {
-    return isEqualCellAndClickedCell(cell, clickedCell)
+    return isEqualCellAndClickedCell(cell, clickedCell) && hasStoneLeft(cell)
       ? changeStoneOfCell(cell, clickedCell)
       : cell
   }
