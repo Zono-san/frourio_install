@@ -1,20 +1,10 @@
 import Head from 'next/head'
-import { useCallback, useState } from 'react'
-import useAspidaSWR from '@aspida/swr'
+import { useState } from 'react'
+// import useAspidaSWR from '@aspida/swr'
 import styles from '~/styles/Home.module.css'
-import { apiClient } from '~/utils/apiClient'
-import UserBanner from '~/components/UserBanner'
-import type { Task } from '$prisma/client'
-import type { FormEvent, ChangeEvent } from 'react'
-import {
-  getAllJSDocTagsOfKind,
-  isNoSubstitutionTemplateLiteral,
-  isNumericLiteral
-} from 'typescript'
-import { isNumber } from 'class-validator'
-import { type } from 'os'
-import { CANCELLED } from 'dns'
-import { clearLine } from 'readline'
+// import { apiClient } from '~/utils/apiClient'
+// import type { Task } from '$prisma/client'
+// import type { FormEvent, ChangeEvent } from 'react'
 
 const STONE = {
   NONE: 0,
@@ -29,29 +19,29 @@ type Cell = {
 }
 
 const Home = () => {
-  const { data: tasks, error, revalidate } = useAspidaSWR(apiClient.tasks)
-  const [label, setLabel] = useState('')
-  const inputLabel = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => setLabel(e.target.value),
-    []
-  )
+  // const { data: tasks, error, revalidate } = useAspidaSWR(apiClient.tasks)
+  // const [label, setLabel] = useState('')
+  // const inputLabel = useCallback(
+  //   (e: ChangeEvent<HTMLInputElement>) => setLabel(e.target.value),
+  //   []
+  // )
 
-  const createTask = useCallback(
-    async (e: FormEvent) => {
-      e.preventDefault()
-      if (!label) return
+  // const createTask = useCallback(
+  //   async (e: FormEvent) => {
+  //     e.preventDefault()
+  //     if (!label) return
 
-      await apiClient.tasks.post({ body: { label } })
-      setLabel('')
-      revalidate()
-    },
-    [label]
-  )
+  //     await apiClient.tasks.post({ body: { label } })
+  //     setLabel('')
+  //     revalidate()
+  //   },
+  //   [label]
+  // )
 
-  const toggleDone = useCallback(async (task: Task) => {
-    await apiClient.tasks._taskId(task.id).patch({ body: { done: !task.done } })
-    revalidate()
-  }, [])
+  // const toggleDone = useCallback(async (task: Task) => {
+  //   await apiClient.tasks._taskId(task.id).patch({ body: { done: !task.done } })
+  //   revalidate()
+  // }, [])
 
   // const deleteTask = useCallback(async (task: Task) => {
   //   await apiClient.tasks._taskId(task.id).delete()
@@ -156,8 +146,8 @@ const Home = () => {
     { x: 7, y: 7, stone: STONE.NONE }
   ])
 
-  if (error) return <div>failed to load</div>
-  if (!tasks) return <div>loading...</div>
+  // if (error) return <div>failed to load</div>
+  // if (!tasks) return <div>loading...</div>
 
   return (
     <div className={styles.container}>
@@ -195,7 +185,3 @@ const Home = () => {
   )
 }
 export default Home
-
-function setStone() {
-  throw new Error('Function not implemented.')
-}
