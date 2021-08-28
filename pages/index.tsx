@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { useCallback } from 'react'
 import { useState } from 'react'
 // import useAspidaSWR from '@aspida/swr'
 import styles from '~/styles/Home.module.css'
@@ -52,8 +53,13 @@ const Home = () => {
     return cell.x === clickedCell.x && cell.y === clickedCell.y
   }
 
-  const hasStoneLeft = (cell: Cell) => {
-    return board.some(cell) ? STONE.BLACK : cell
+  const hasStoneLeft = (clickedCell: Cell) => {
+    return board.some(
+      (checkingCell) =>
+        clickedCell.x - 1 === checkingCell.x &&
+        clickedCell.y === checkingCell.y &&
+        checkingCell.stone !== STONE.NONE
+    )
   }
 
   const changeStoneOfCell = (cell: Cell, clickedCell: Cell) => {
