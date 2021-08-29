@@ -1,8 +1,14 @@
 import Head from 'next/head'
+import { useMemo } from 'react'
 import { useCallback } from 'react'
 import { useState } from 'react'
 // import useAspidaSWR from '@aspida/swr'
-import styles from '~/styles/Home.module.css'
+import styles, {
+  blackStone,
+  cell,
+  stoneBlack,
+  whiteStone
+} from '~/styles/Home.module.css'
 // import { apiClient } from '~/utils/apiClient'
 // import type { Task } from '$prisma/client'
 // import type { FormEvent, ChangeEvent } from 'react'
@@ -156,18 +162,30 @@ const Home = () => {
     { x: 7, y: 7, stone: STONE.NONE }
   ])
 
+  const blackCount = useMemo((): number => {
+    return board.filter(() => {
+      return blackStone.length
+    }).length
+  }, [board])
+
+  const whiteCount = useMemo((): number => {
+    return board.filter(() => {
+      return whiteStone.length
+    }).length
+  }, [board])
+
   // if (error) return <div>failed to load</div>
   // if (!tasks) return <div>loading...</div>
 
   return (
     <>
       <div>
-        <h1>オセロ</h1>
+        <h1>オセロゲーム</h1>
         <div className={styles.stoneBlack}>
-          <p className={styles.title}>×2</p>
+          <p className={styles.title}>×{blackCount}</p>
         </div>
         <div className={styles.stoneWhite}>
-          <div className={styles.title}>×2</div>
+          <div className={styles.title}>×{whiteCount}</div>
         </div>
       </div>
       <div className={styles.container}>
@@ -187,10 +205,10 @@ const Home = () => {
                       onClick(cell)
                     }}
                   >
-                    {cell.stone !== 0 && (
+                    {cell.stone !== STONE.NONE && (
                       <div
                         className={
-                          cell.stone === 1
+                          cell.stone === STONE.BLACK
                             ? styles.blackStone
                             : styles.whiteStone
                         }
