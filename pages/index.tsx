@@ -160,38 +160,50 @@ const Home = () => {
   // if (!tasks) return <div>loading...</div>
 
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>frourio-todo-app</title>
-        <link rel="icon" href="/favicon.png" />
-      </Head>
-
-      <main className={styles.main}>
-        <div className="wrapper">
-          <div className={styles.square}>
-            <div className={styles.squareIn}>
-              {board.map((cell, i) => (
-                <div
-                  key={i}
-                  className={styles.cell}
-                  onClick={() => {
-                    onClick(cell)
-                  }}
-                >
-                  {cell.stone !== 0 && (
-                    <div
-                      className={
-                        cell.stone === 1 ? styles.blackStone : styles.whiteStone
-                      }
-                    ></div>
-                  )}
-                </div>
-              ))}
+    <>
+      <div>
+        <h1>オセロ</h1>
+        <div className={styles.stoneBlack}>
+          <p className={styles.title}>×2</p>
+        </div>
+        <div className={styles.stoneWhite}>
+          <div className={styles.title}>×2</div>
+        </div>
+      </div>
+      <div className={styles.container}>
+        <Head>
+          <title>frourio-todo-app</title>
+          <link rel="icon" href="/favicon.png" />
+        </Head>
+        <main className={styles.main}>
+          <div className="wrapper">
+            <div className={styles.square}>
+              <div className={styles.squareIn}>
+                {board.map((cell, i) => (
+                  <div
+                    key={i}
+                    className={styles.cell}
+                    onClick={() => {
+                      onClick(cell)
+                    }}
+                  >
+                    {cell.stone !== 0 && (
+                      <div
+                        className={
+                          cell.stone === 1
+                            ? styles.blackStone
+                            : styles.whiteStone
+                        }
+                      ></div>
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </main>
-    </div>
+        </main>
+      </div>
+    </>
   )
 }
 export default Home

@@ -1,16 +1,31 @@
 .container {
   min-height: 100vh;
   padding: 0 0.5rem;
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  display: flex;
+}
+
+.stoneBlack {
+  width: 30px;
+  height: 30px;
+  background-color: black;
+  border-radius: 50%;
+}
+
+.stoneWhite {
+  width: 28px;
+  height: 28px;
+  background-color: white;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 1px;
 }
 
 .main {
   padding: 5rem 0;
   flex: 1;
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -30,7 +45,6 @@
 }
 
 .footer a {
-  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -47,14 +61,11 @@
 }
 
 .title {
+  display: inline-block;
+  padding-left: 30px;
   margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
-}
-
-.title,
-.description {
-  text-align: center;
+  line-height: 0.8;
+  font-size: 2rem;
 }
 
 .description {
@@ -83,9 +94,9 @@
   width: 640px;
   max-width: 100%;
   margin: 0 auto;
-  display: flex;
   justify-content: center;
   align-items: center;
+  display: flex;
 }
 
 .cell {
