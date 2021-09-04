@@ -1,14 +1,8 @@
 import Head from 'next/head'
 import { useMemo } from 'react'
-import { useCallback } from 'react'
 import { useState } from 'react'
 // import useAspidaSWR from '@aspida/swr'
-import styles, {
-  blackStone,
-  cell,
-  stoneBlack,
-  whiteStone
-} from '~/styles/Home.module.css'
+import styles, { whiteStone } from '~/styles/Home.module.css'
 // import { apiClient } from '~/utils/apiClient'
 // import type { Task } from '$prisma/client'
 // import type { FormEvent, ChangeEvent } from 'react'
@@ -164,13 +158,13 @@ const Home = () => {
 
   const blackCount = useMemo((): number => {
     return board.filter(() => {
-      return blackStone.length
+      return board.includes.length
     }).length
   }, [board])
 
   const whiteCount = useMemo((): number => {
     return board.filter(() => {
-      return whiteStone.length
+      return whiteStone.includes(whiteStone)
     }).length
   }, [board])
 
