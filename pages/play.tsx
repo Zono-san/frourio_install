@@ -23,7 +23,7 @@ const Home = () => {
       newBoard[y][x - 1] !== undefined &&
       newBoard[y][x - 1] === opponentColor
     ) {
-      newBoard[y][x] === currentColor
+      newBoard[y][x] = currentColor
     }
 
     if (
@@ -31,7 +31,7 @@ const Home = () => {
       newBoard[y - 1][x - 1] !== undefined &&
       newBoard[y - 1][x - 1] === opponentColor
     ) {
-      newBoard[y][x] === currentColor
+      newBoard[y][x] = currentColor
     }
 
     if (
