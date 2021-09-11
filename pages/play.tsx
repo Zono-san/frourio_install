@@ -94,7 +94,7 @@ const Home = () => {
     // ) {
     //   puttableFlag = true
     // }
-    if (puttableFlag === false) {
+    if (puttableFlag === true) {
       newBoard[y][x] = currentColor
     }
     // ここまで編集
