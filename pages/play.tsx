@@ -39,64 +39,11 @@ const Home = () => {
       }
     }
 
-    // if (
-    //   newBoard[y - 1] !== undefined &&
-    //   newBoard[y - 1][x - 1] !== undefined &&
-    //   newBoard[y - 1][x - 1] === opponentColor
-    // ) {
-    //   puttableFlag = true
-    // }
-
-    // if (
-    //   newBoard[y - 1] !== undefined &&
-    //   newBoard[y - 1][x] !== undefined &&
-    //   newBoard[y - 1][x] === opponentColor
-    // ) {
-    //   puttableFlag = true
-    // }
-
-    // if (
-    //   newBoard[y - 1] !== undefined &&
-    //   newBoard[y - 1][x + 1] !== undefined &&
-    //   newBoard[y - 1][x + 1] === opponentColor
-    // ) {
-    //   puttableFlag = true
-    // }
-
-    // if (
-    //   newBoard[y] !== undefined &&
-    //   newBoard[y][x + 1] !== undefined &&
-    //   newBoard[y][x + 1] === opponentColor
-    // ) {
-    //   puttableFlag = true
-    // }
-
-    // if (
-    //   newBoard[y + 1] !== undefined &&
-    //   newBoard[y + 1][x + 1] !== undefined &&
-    //   newBoard[y + 1][x + 1] === opponentColor
-    // ) {
-    //   puttableFlag = true
-    // }
-
-    // if (
-    //   newBoard[y + 1] !== undefined &&
-    //   newBoard[y + 1][x] !== undefined &&
-    //   newBoard[y + 1][x] === opponentColor
-    // ) {
-    //   puttableFlag = true
-    // }
-
-    // if (
-    //   newBoard[y + 1] !== undefined &&
-    //   newBoard[y + 1][x - 1] !== undefined &&
-    //   newBoard[y + 1][x - 1] === opponentColor
-    // ) {
-    //   puttableFlag = true
-    // }
     if (puttableFlag === true) {
       newBoard[y][x] = currentColor
+      nextTurn = opponentColor
     }
+
     // ここまで編集
     setCurrentColor(nextTurn)
     setBoard(newBoard)
