@@ -28,14 +28,14 @@ const Home = () => {
       [0, 1],
       [-1, 1]
     ]
-    const puttableFlag = false
-    for (const puttableFlag of directions) {
+    let puttableFlag = false
+    for (const direction of directions) {
       if (
-        newBoard[y] !== undefined &&
-        newBoard[y][x - 1] !== undefined &&
-        newBoard[y][x - 1] === opponentColor
+        newBoard[y + direction[1]] !== undefined &&
+        newBoard[y + direction[1]][x + direction[0]] !== undefined &&
+        newBoard[y + direction[1]][x + direction[0]] === opponentColor
       ) {
-        console.log(puttableFlag)
+        puttableFlag = true
       }
     }
 
