@@ -18,67 +18,83 @@ const Home = () => {
     const opponentColor =
       currentColor === STONE.WHITE ? STONE.BLACK : STONE.WHITE
     nextTurn = currentColor === STONE.BLACK ? STONE.WHITE : STONE.BLACK
-    if (
-      newBoard[y] !== undefined &&
-      newBoard[y][x - 1] !== undefined &&
-      newBoard[y][x - 1] === opponentColor
-    ) {
-      newBoard[y][x] = currentColor
+    const directions = [
+      [-1, 0],
+      [-1, -1],
+      [0, -1],
+      [1, -1],
+      [1, 0],
+      [1, 1],
+      [0, 1],
+      [-1, 1]
+    ]
+    const puttableFlag = false
+    for (const puttableFlag of directions) {
+      if (
+        newBoard[y] !== undefined &&
+        newBoard[y][x - 1] !== undefined &&
+        newBoard[y][x - 1] === opponentColor
+      ) {
+        console.log(puttableFlag)
+      }
     }
 
-    if (
-      newBoard[y - 1] !== undefined &&
-      newBoard[y - 1][x - 1] !== undefined &&
-      newBoard[y - 1][x - 1] === opponentColor
-    ) {
-      newBoard[y][x] = currentColor
-    }
+    // if (
+    //   newBoard[y - 1] !== undefined &&
+    //   newBoard[y - 1][x - 1] !== undefined &&
+    //   newBoard[y - 1][x - 1] === opponentColor
+    // ) {
+    //   puttableFlag = true
+    // }
 
-    if (
-      newBoard[y - 1] !== undefined &&
-      newBoard[y - 1][x] !== undefined &&
-      newBoard[y - 1][x] === opponentColor
-    ) {
-      newBoard[y][x] = currentColor
-    }
+    // if (
+    //   newBoard[y - 1] !== undefined &&
+    //   newBoard[y - 1][x] !== undefined &&
+    //   newBoard[y - 1][x] === opponentColor
+    // ) {
+    //   puttableFlag = true
+    // }
 
-    if (
-      newBoard[y - 1] !== undefined &&
-      newBoard[y - 1][x + 1] !== undefined &&
-      newBoard[y - 1][x + 1] === opponentColor
-    ) {
-      newBoard[y][x] = currentColor
-    }
+    // if (
+    //   newBoard[y - 1] !== undefined &&
+    //   newBoard[y - 1][x + 1] !== undefined &&
+    //   newBoard[y - 1][x + 1] === opponentColor
+    // ) {
+    //   puttableFlag = true
+    // }
 
-    if (
-      newBoard[y] !== undefined &&
-      newBoard[y][x + 1] !== undefined &&
-      newBoard[y][x + 1] === opponentColor
-    ) {
-      newBoard[y][x] = currentColor
-    }
+    // if (
+    //   newBoard[y] !== undefined &&
+    //   newBoard[y][x + 1] !== undefined &&
+    //   newBoard[y][x + 1] === opponentColor
+    // ) {
+    //   puttableFlag = true
+    // }
 
-    if (
-      newBoard[y + 1] !== undefined &&
-      newBoard[y + 1][x + 1] !== undefined &&
-      newBoard[y + 1][x + 1] === opponentColor
-    ) {
-      newBoard[y][x] = currentColor
-    }
+    // if (
+    //   newBoard[y + 1] !== undefined &&
+    //   newBoard[y + 1][x + 1] !== undefined &&
+    //   newBoard[y + 1][x + 1] === opponentColor
+    // ) {
+    //   puttableFlag = true
+    // }
 
-    if (
-      newBoard[y + 1] !== undefined &&
-      newBoard[y + 1][x] !== undefined &&
-      newBoard[y + 1][x] === opponentColor
-    ) {
-      newBoard[y][x] = currentColor
-    }
+    // if (
+    //   newBoard[y + 1] !== undefined &&
+    //   newBoard[y + 1][x] !== undefined &&
+    //   newBoard[y + 1][x] === opponentColor
+    // ) {
+    //   puttableFlag = true
+    // }
 
-    if (
-      newBoard[y + 1] !== undefined &&
-      newBoard[y + 1][x - 1] !== undefined &&
-      newBoard[y + 1][x - 1] === opponentColor
-    ) {
+    // if (
+    //   newBoard[y + 1] !== undefined &&
+    //   newBoard[y + 1][x - 1] !== undefined &&
+    //   newBoard[y + 1][x - 1] === opponentColor
+    // ) {
+    //   puttableFlag = true
+    // }
+    if (puttableFlag === false) {
       newBoard[y][x] = currentColor
     }
     // ここまで編集
