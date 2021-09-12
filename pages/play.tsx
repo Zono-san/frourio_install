@@ -1,7 +1,12 @@
 import Head from 'next/head'
 import { useMemo } from 'react'
 import { useState } from 'react'
-import styles, { whiteStone } from '~/styles/Home.module.css'
+import styles, {
+  blackStone,
+  cell,
+  stoneBlack,
+  whiteStone
+} from '~/styles/Home.module.css'
 
 const STONE = {
   NONE: 0,
@@ -62,9 +67,9 @@ const Home = () => {
   ])
 
   const blackCount = useMemo((): number => {
-    return board.filter(() => {
-      return board.includes.length
-    }).length
+    let count = 0
+    count += board[3][5] === STONE.BLACK ? 1 : 0
+    return count
   }, [board])
 
   const whiteCount = useMemo((): number => {
