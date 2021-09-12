@@ -64,7 +64,9 @@ const Home = () => {
   const blackCount = useMemo((): number => {
     let count = 0
     for (let x = 0; x < 8; x += 1) {
-      count += board[2][x] === STONE.BLACK ? 1 : 0
+      for (let y = 0; y < 8; y += 1) {
+        count += board[y][x] === STONE.BLACK ? 1 : 0
+      }
     }
     return count
   }, [board])
@@ -72,7 +74,9 @@ const Home = () => {
   const whiteCount = useMemo((): number => {
     let count = 0
     for (let x = 0; x < 8; x += 1) {
-      count += board[2][x] === STONE.WHITE ? 1 : 0
+      for (let y = 0; y < 8; y += 1) {
+        count += board[y][x] === STONE.WHITE ? 1 : 0
+      }
     }
     return count
   }, [board])
