@@ -35,7 +35,8 @@ const Home = () => {
         newBoard[y + direction[1]][x + direction[0]] !== undefined &&
         newBoard[y + direction[1]][x + direction[0]] === opponentColor &&
         newBoard[y + direction[1] * 2] !== undefined &&
-        newBoard[x + direction[0] * 2] !== undefined
+        newBoard[y + direction[1] * 2][x + direction[0] * 2] !== undefined &&
+        newBoard[y + direction[1] * 2][x + direction[0] * 2] === currentColor
       ) {
         puttableFlag = true
       }
