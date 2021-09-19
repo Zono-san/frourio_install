@@ -38,11 +38,11 @@ const Home = () => {
         newBoard[y + direction[1] * 2][x + direction[0] * 2] !== undefined &&
         newBoard[y + direction[1] * 2][x + direction[0] * 2] === currentColor
       ) {
-        candidates.push({ x: 1, y: 1 })
+        candidates.push({ x: x + direction[0], y: y + direction[1] })
       }
     }
     for (const candidate of candidates) {
-      newBoard[candidate.y][candidate.x] = opponentColor
+      newBoard[candidate.y][candidate.x] = currentColor
     }
 
     if (candidates.length > 0) {
