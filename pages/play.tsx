@@ -28,7 +28,7 @@ const Home = () => {
       [0, 1],
       [-1, 1]
     ]
-    let puttableFlag = false
+    const candidates: { x: number; y: number }[] = []
     for (const direction of directions) {
       if (
         newBoard[y + direction[1]] !== undefined &&
@@ -38,11 +38,14 @@ const Home = () => {
         newBoard[y + direction[1] * 2][x + direction[0] * 2] !== undefined &&
         newBoard[y + direction[1] * 2][x + direction[0] * 2] === currentColor
       ) {
-        puttableFlag = true
+        candidates.push({ x: 1, y: 1 })
       }
     }
+    for (const candidate of candidates) {
+      newBoard[candidate.y][candidate.x] = opponentColor
+    }
 
-    if (puttableFlag === true) {
+    if (candidates.length > 0) {
       newBoard[y][x] = currentColor
       nextTurn = opponentColor
     }
