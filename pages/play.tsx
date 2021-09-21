@@ -76,8 +76,22 @@ const Home = () => {
                       currentColor
                   ) {
                     candidates.push({
-                      x: x + direction[0] * 6,
-                      y: y + direction[1] * 6
+                      x:
+                        x +
+                        direction[0] * 1 +
+                        direction[0] * 2 +
+                        direction[0] * 3 +
+                        direction[0] * 4 +
+                        direction[0] * 5 +
+                        direction[0] * 6,
+                      y:
+                        y +
+                        direction[1] * 1 +
+                        direction[1] * 2 +
+                        direction[1] * 3 +
+                        direction[1] * 4 +
+                        direction[1] * 5 +
+                        direction[1] * 6
                     })
                   } else if (
                     newBoard[y + direction[1] * 6] !== undefined &&
@@ -87,8 +101,20 @@ const Home = () => {
                       currentColor
                   )
                     candidates.push({
-                      x: x + direction[0] * 5,
-                      y: y + direction[1] * 5
+                      x:
+                        x +
+                        direction[0] * 1 +
+                        direction[0] * 2 +
+                        direction[0] * 3 +
+                        direction[0] * 4 +
+                        direction[0] * 5,
+                      y:
+                        y +
+                        direction[1] * 1 +
+                        direction[1] * 2 +
+                        direction[1] * 3 +
+                        direction[1] * 4 +
+                        direction[1] * 5
                     })
                 } else if (
                   newBoard[y + direction[1] * 5] !== undefined &&
@@ -98,8 +124,18 @@ const Home = () => {
                     currentColor
                 )
                   candidates.push({
-                    x: x + direction[0] * 4,
-                    y: y + direction[1] * 4
+                    x:
+                      x +
+                      direction[0] * 1 +
+                      direction[0] * 2 +
+                      direction[0] * 3 +
+                      direction[0] * 4,
+                    y:
+                      y +
+                      direction[1] * 1 +
+                      direction[1] * 2 +
+                      direction[1] * 3 +
+                      direction[1] * 4
                   })
               } else if (
                 newBoard[y + direction[1] * 4] !== undefined &&
@@ -109,8 +145,8 @@ const Home = () => {
                   currentColor
               )
                 candidates.push({
-                  x: x + direction[0] * 3,
-                  y: y + direction[1] * 3
+                  x: x + direction[0] * 1 + direction[0] * 2 + direction[0] * 3,
+                  y: y + direction[1] * 1 + direction[1] * 2 + direction[1] * 3
                 })
             } else if (
               newBoard[y + direction[1] * 3] !== undefined &&
@@ -120,8 +156,8 @@ const Home = () => {
                 currentColor
             )
               candidates.push({
-                x: x + direction[0] * 2,
-                y: y + direction[1] * 2
+                x: x + direction[0] * 1 + direction[0] * 2,
+                y: y + direction[1] * 1 + direction[1] * 2
               })
           } else if (
             newBoard[y + direction[1] * 2] !== undefined &&
