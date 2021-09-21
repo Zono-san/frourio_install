@@ -73,69 +73,66 @@ const Home = () => {
                     newBoard[y + direction[1] * 7][x + direction[0] * 7] !==
                       undefined &&
                     newBoard[y + direction[1] * 7][x + direction[0] * 7] ===
-                      opponentColor
+                      currentColor
                   ) {
-                    if (
-                      newBoard[y + direction[1] * 8] !== undefined &&
-                      newBoard[y + direction[1] * 8][x + direction[0] * 8] !==
-                        undefined &&
-                      newBoard[y + direction[1] * 8][x + direction[0] * 8] ===
-                        opponentColor
-                    )
-                      candidates.push({
-                        x: x + direction[0] * 7,
-                        y: y + direction[1] * 7
-                      })
-                  } else
-                    newBoard[y + direction[1] * 7] !== undefined &&
-                      newBoard[y + direction[1] * 7][x + direction[0] * 7] !==
-                        undefined &&
-                      newBoard[y + direction[1] * 7][x + direction[0] * 7] ===
-                        currentColor
-                  candidates.push({
-                    x: x + direction[0] * 6,
-                    y: y + direction[1] * 6
-                  })
-                }
-              } else
-                newBoard[y + direction[1] * 6] !== undefined &&
-                  newBoard[y + direction[1] * 6][x + direction[0] * 6] !==
+                    candidates.push({
+                      x: x + direction[0] * 6,
+                      y: y + direction[1] * 6
+                    })
+                  } else if (
+                    newBoard[y + direction[1] * 6] !== undefined &&
+                    newBoard[y + direction[1] * 6][x + direction[0] * 6] !==
+                      undefined &&
+                    newBoard[y + direction[1] * 6][x + direction[0] * 6] ===
+                      currentColor
+                  )
+                    candidates.push({
+                      x: x + direction[0] * 5,
+                      y: y + direction[1] * 5
+                    })
+                } else if (
+                  newBoard[y + direction[1] * 5] !== undefined &&
+                  newBoard[y + direction[1] * 5][x + direction[0] * 5] !==
                     undefined &&
-                  newBoard[y + direction[1] * 6][x + direction[0] * 6] ===
+                  newBoard[y + direction[1] * 5][x + direction[0] * 5] ===
                     currentColor
-              candidates.push({
-                x: x + direction[0] * 5,
-                y: y + direction[1] * 5
-              })
-            } else
-              newBoard[y + direction[1] * 5] !== undefined &&
-                newBoard[y + direction[1] * 5][x + direction[0] * 5] !==
+                )
+                  candidates.push({
+                    x: x + direction[0] * 4,
+                    y: y + direction[1] * 4
+                  })
+              } else if (
+                newBoard[y + direction[1] * 4] !== undefined &&
+                newBoard[y + direction[1] * 4][x + direction[0] * 4] !==
                   undefined &&
-                newBoard[y + direction[1] * 5][x + direction[0] * 5] ===
+                newBoard[y + direction[1] * 4][x + direction[0] * 4] ===
                   currentColor
-            candidates.push({
-              x: x + direction[0] * 4,
-              y: y + direction[1] * 4
-            })
-          } else
-            newBoard[y + direction[1] * 4] !== undefined &&
-              newBoard[y + direction[1] * 4][x + direction[0] * 4] !==
+              )
+                candidates.push({
+                  x: x + direction[0] * 3,
+                  y: y + direction[1] * 3
+                })
+            } else if (
+              newBoard[y + direction[1] * 3] !== undefined &&
+              newBoard[y + direction[1] * 3][x + direction[0] * 3] !==
                 undefined &&
-              newBoard[y + direction[1] * 4][x + direction[0] * 4] ===
+              newBoard[y + direction[1] * 3][x + direction[0] * 3] ===
                 currentColor
-          candidates.push({ x: x + direction[0] * 3, y: y + direction[1] * 3 })
-        } else
-          newBoard[y + direction[1] * 3] !== undefined &&
-            newBoard[y + direction[1] * 3][x + direction[0] * 3] !==
+            )
+              candidates.push({
+                x: x + direction[0] * 2,
+                y: y + direction[1] * 2
+              })
+          } else if (
+            newBoard[y + direction[1] * 2] !== undefined &&
+            newBoard[y + direction[1] * 2][x + direction[0] * 2] !==
               undefined &&
-            newBoard[y + direction[1] * 3][x + direction[0] * 3] ===
+            newBoard[y + direction[1] * 2][x + direction[0] * 2] ===
               currentColor
-        candidates.push({ x: x + direction[0] * 2, y: y + direction[1] * 2 })
-      } else
-        newBoard[y + direction[1] * 2] !== undefined &&
-          newBoard[y + direction[1] * 2][x + direction[0] * 2] !== undefined &&
-          newBoard[y + direction[1] * 2][x + direction[0] * 2] === currentColor
-      candidates.push({ x: x + direction[0], y: y + direction[1] })
+          )
+            candidates.push({ x: x + direction[0], y: y + direction[1] })
+        }
+      }
     }
     for (const candidate of candidates) {
       newBoard[candidate.y][candidate.x] = currentColor
